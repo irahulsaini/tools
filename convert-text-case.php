@@ -16,7 +16,7 @@ $meta['og_description']         = $meta['description'];
 <?php _head(array(
     'meta'          => $meta,
 )); ?>
-<?php _header(); ?>
+<?php /*_header();*/ ?>
 
 
         <style>
@@ -63,9 +63,11 @@ $meta['og_description']         = $meta['description'];
 </style>
 
 
-        <div class="container">
+        <div class="container bg-white py-5 my-3 shadow-sm">
+        	
             <form class="_rstool">
                 <div class="bg-light border pt-3 px-3 pb-1 rounded">
+                	<h6>Convert Text Case Online</h6>
                     <div class="row justify-content-center">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mb-3">
                             <div class="form-group mb-0">
@@ -155,6 +157,8 @@ $meta['og_description']         = $meta['description'];
                     
                 </div>
             </form>
+
+        	<p class="text-muted mt-4">Convert Text Case Online is tool that can convert english characters into lower case, upper case, sentence case, paragraph case, title case and many more...</p>
         </div>
 
 <script>
@@ -245,7 +249,7 @@ window.addEventListener('load',function(){
     }
 });
 </script>
-<?php _footer(); ?>
+<?php /*_footer();*/ ?>
 <?php _foot(array(
 	'after_foot'=>'
             <script src="https://weforit-tools.github.io/development/js/global.js"></script>
