@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Convert Text Case</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" id="bootstrap-css"  href="https://www.irahulsaini.com/views/assets/css/bootstrap.css" type="text/css" media="all" />
-        <link rel="stylesheet" id="stylesheet-css"  href="https://www.irahulsaini.com/views/assets/css/style.css" type="text/css" media="all" />
-        <link rel="stylesheet" id="fontawesome-css"  href="https://irahulsaini.b-cdn.net/css/font-awesome.min.css?ver=5.2.3" type="text/css" media="all" />
-        <link rel="stylesheet" href="./css/tools.css" type="text/css" media="all" />
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php
+$meta['title']                  = 'Convert Text Case';
+$meta['description']            = 'Convert Text Case';
+$meta['page_url']               = '';
+$meta['og_title']               = $meta['title'];
+$meta['og_description']         = $meta['description'];
+//$meta['og_image']               = 'https://www.irahulsaini.com/images/giveaways.jpg';
+//$meta['og_image_width']         = '1200';
+//$meta['og_image_height']        = '628';
+//$meta['twitter_title']          = $meta['title'];
+//$meta['twitter_description']    = $meta['description'];
+//$meta['twitter_image']          = $meta['og_image'];
 
-    </head>
-    <body class="bg-white">
+?>
+<?php _head(array(
+    'meta'          => $meta,
+)); ?>
+<?php _header(); ?>
+
+
         <style>
 
 .snackbar{
@@ -54,6 +61,8 @@
     }
 }
 </style>
+
+
         <div class="container">
             <form class="_rstool">
                 <div class="bg-light border pt-3 px-3 pb-1 rounded">
@@ -147,15 +156,11 @@
                 </div>
             </form>
         </div>
-        <script type="text/javascript" src="https://irahulsaini.b-cdn.net/js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="https://irahulsaini.b-cdn.net/js/bootstrap.bundle.min.js"></script>
-    	<script type="text/javascript" src="https://irahulsaini.b-cdn.net/js/main.js"></script>
-    	<script type="text/javascript" src="https://www.irahulsaini.com/views/assets/js/global.js"></script>
-        <script src="https://weforit-tools.github.io/development/js/global.js"></script>
-        <script src="https://weforit-tools.github.io/development/js/functions.js"></script>
+
 <script>
     var _case = 'title', pos = 0, str = [];
-    $('#copy_text').click2copy('#input');
+window.addEventListener('load',function(){
+	$('#copy_text').click2copy('#input');
     $('#undo').on('click',function(e){
         if(str.length > 0){
             pos--;
@@ -238,6 +243,11 @@
         $('#words').html(counter.words);
         $('#lines').html(counter.lines);        
     }
+});
 </script>
-    </body>
-</html>
+<?php _footer(); ?>
+<?php _foot(array(
+	'after_foot'=>'
+            <script src="https://weforit-tools.github.io/development/js/global.js"></script>
+            <script src="https://weforit-tools.github.io/development/js/functions.js"></script>'
+)); ?>
