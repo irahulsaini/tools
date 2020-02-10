@@ -158,7 +158,9 @@ $meta['og_description']         = $meta['description'];
                 </div>
             </form>
 
-        	<p class="text-muted mt-4">Convert Text Case Online is tool that can convert english characters into lower case, upper case, sentence case, paragraph case, title case and many more...</p>
+        	<p class="text-muted text-justify mt-4">Convert Text Case is a online tool which helps to transform the text. Transform including Lower Case, Upper Case, Title Case, Capitalize Case, Sentence Case, Alternative Case and more.</p>
+        	<p class="text-muted text-justify">Convert Text Case also has a option to make URL slug. It can be include hyphen (-) or underscore (_).</p>
+        	<p class="text-muted text-justify">Note: To Enhance the performance of this tool, we are advised to use modern and latest browser software. This Tool is based on client side scripting. Any kind of Data will not stored that is entered in any input. All Process/Conversion done by using browser. If we talk speed and performance of this tool then it all depends on your browser speed, CPU and RAM.</p>
         </div>
 
 <script>
