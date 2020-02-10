@@ -21,7 +21,8 @@ $meta['og_description']         = $meta['description'];
 
 
         <div class="container bg-white py-5 my-3 shadow-sm">
-        	
+        	<h5 class="text-uppercase text-center">CK HTML Editor</h5>
+            <p class="text-center text-muted">Get Nice & Clean HTML Code, Start Type or Copy-Paste your Code</p>
             <form class="_rstool">
                 <div class="rounded">
                     <div class="row justify-content-center">
