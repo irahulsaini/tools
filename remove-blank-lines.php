@@ -16,7 +16,7 @@ $meta['og_description']         = $meta['description'];
 <?php _head(array(
     'meta'          => $meta,
 )); ?>
-<?php /*_header();*/ ?>
+<?php _header(); ?>
 
 
 
@@ -132,7 +132,7 @@ window.addEventListener('load',function(){
     });
 });
 </script>
-<?php /*_footer();*/ ?>
+<?php _footer(); ?>
 <?php _foot(array(
 	'after_foot'=>'
             <script src="https://weforit-tools.github.io/development/js/global.js"></script>
