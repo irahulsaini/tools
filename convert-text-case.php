@@ -251,6 +251,7 @@ window.addEventListener('load',function(){
     }
 });
 </script>
+<?php get_template('inc/tools.php');?>
 <?php _footer(); ?>
 <?php _foot(array(
 	'after_foot'=>'
