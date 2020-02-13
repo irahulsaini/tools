@@ -150,7 +150,7 @@ $meta['og_description']         = $meta['description'];
                               <input type="checkbox" name="trim" class="custom-control-input" id="trim" value="1" checked>
                               <label class="custom-control-label" for="trim">Trim Text</label>
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-play mr-2"></i>Convert Text Case</button><br/>
+                            <button type="submit" class="btn btn-sm py-3 rounded-0 mb-3 px-4 btn-primary"><i class="fa fa-play mr-2"></i>Convert Text Case</button><br/>
                             
                         </div>
                     </div>

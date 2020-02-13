@@ -30,7 +30,11 @@ $meta['og_description']         = $meta['description'];
         'table_export'  : {},
     }
 </script>
-
+<style type="text/css">
+    .tableexport-caption{
+        display:none;
+    }
+</style>
 
         <div class="container bg-white py-5 my-3 shadow-sm">
         	
@@ -40,25 +44,18 @@ $meta['og_description']         = $meta['description'];
                     <div class="row justify-content-center">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
                             <div class="form-group mb-0">
-                                <textarea id="input" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Start typing..." rows="10"></textarea>
+                                <textarea id="input" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Load Sitemap XML File or Copy-Paste Sitemap XML Code here..." rows="10"></textarea>
                             </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-6">
-                                    
-                                </div>
-                                <div class="col-12 col-sm-6 text-center text-sm-right">
-                                    <label type="button" class="btn btn-primary btn-sm py-0 mb-0" data-toggle="tooltip" title="Load File From Your Device">
-                                        <span id="filename"></span>
-                                        <i class="fa fa-plus-circle"></i>
-                                        <input type="file" id="loadFile" name="loadfile" class="d-none"/>
-                                    </label>
-                                    <button type="button" class="btn btn-primary btn-sm py-0" data-toggle="tooltip" title="Copy Text" id="copy_text"><i class="fa fa-file-text"></i></button>
-                                    <button type="reset" class="btn btn-primary btn-sm py-0" data-toggle="tooltip" title="Reset All Fields"><i class="fa fa-eraser mr-1"></i></button>
-                                </div>
-                            </div>
+                            &mdash; OR &mdash;
+                            <br/>
+                            <label type="button" class="btn btn-dark border btn-sm py-1 mb-0" data-toggle="tooltip" title="Load File From Your Device">
+                                <span id="filename">Load File</span>
+                                <i class="fa fa-plus-circle"></i>
+                                <input type="file" id="loadFile" name="loadfile" class="d-none"/>
+                            </label>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 text-center my-1">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-play mr-2"></i>Extract URLs</button><br/>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 text-center mt-1 mb-4">
+                            <button type="submit" class="btn btn-primary btn-sm py-3 px-4 rounded-0"><i class="fa fa-play mr-2"></i>Extract URLs</button><br/>
                             
                         </div>
                     </div>
@@ -221,7 +218,8 @@ window.addEventListener('load',function(){
             <script src="https://weforit-tools.github.io/development/js/global.js"></script>
             <script src="https://weforit-tools.github.io/development/js/functions.js"></script>
             <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
+            <link rel="stylesheet" href="'.(base_url('views/assets/css/dataTables.min.css')).'"/>
+            <script src="'.(base_url('views/assets/js/datatables.min.js')).'"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/5.2.0/js/tableexport.min.js"></script>'
 )); ?>

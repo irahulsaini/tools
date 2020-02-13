@@ -49,12 +49,10 @@ $meta['og_description']         = $meta['description'];
                                 <div class="col-12 col-sm-6 text-center text-sm-right">
 
                                     <label type="button" class="btn btn-primary btn-sm py-0 mb-0" data-toggle="tooltip" title="Load File From Your Device">
+                                    <span id="filename"></span>
                                         <i class="fa fa-plus-circle"></i>
-                                        <input type="file" id="load_file" name="load_file" class="d-none" accept="text/plain"/>
+                                        <input type="file" id="load_file" name="load_file" class="d-none"/>
                                     </label>
-                                    <button type="button" class="btn btn-primary btn-sm py-0" data-toggle="tooltip" title="Copy Text" id="copy_text"><i class="fa fa-file-text"></i></button>
-                                    <button type="button" class="btn btn-primary btn-sm py-0" data-toggle="tooltip" title="Undo Text" id="undo"><i class="fa fa-undo"></i></button>
-                                    <button type="button" class="btn btn-primary btn-sm py-0" data-toggle="tooltip" title="Redo Text" id="redo"><i class="fa fa-repeat"></i></button>
                                     <button type="reset" class="btn btn-primary btn-sm py-0" data-toggle="tooltip" title="Reset All Fields"><i class="fa fa-eraser mr-1"></i></button>
                                 </div>
                             </div>
@@ -62,73 +60,160 @@ $meta['og_description']         = $meta['description'];
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 small">
                             <strong class="d-block mb-2">Options:</strong>
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="trim" checked="true">
+                                <input type="checkbox" class="custom-control-input" name="trim" id="trim" checked="true">
                                 <label class="custom-control-label" for="trim">Trim Lines (Start &amp; End)</label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="trim_before">
+                                <input type="checkbox" class="custom-control-input" name="ltrim" id="trim_before">
                                 <label class="custom-control-label" for="trim_before">Trim From Start (Every Line)</label>
                             </div>
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="trim_after">
+                                <input type="checkbox" class="custom-control-input" name="rtrim" id="trim_after">
                                 <label class="custom-control-label" for="trim_after">Trim From End (Every Line)</label>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 text-center my-1">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-play mr-2"></i>Remove Blank Lines</button><br/>
+                            <button type="submit" class="btn btn-primary btn-sm py-3 px-4" id="submit"><i class="fa fa-eraser mr-2"></i>Remove Blank Lines</button><br/>
                             
                         </div>
                     </div>
+		            <div id="results" class="collapse">
+		            	<textarea class="form-control form-control-sm bg-white callout mb-0 callout-primary" id="output" rows="8" readonly="true"></textarea>
+		            	<div class="text-center my-4">
+		            		<button type="button" class="btn btn-dark" data-toggle="tooltip" title="Copy Text" id="copy_text"><i class="fa fa-clipboard mr-2"></i>Copy Code</button>
+		            	</div>
+		            </div>
                     
                 </div>
             </form>
         </div>
 
-<script type="javascript/process" id="loadfile">
+<div class="modal" id="process" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="spinner-border text-primary" role="status">
+					<span class="sr-only">Please Wait</span>
+				</div>
+				<div class="font-weight-bold text-primary">Removing Blank Lines...</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="javascript/worker" id="removelines">
+self.importScripts('https://weforit-tools.github.io/development/js/functions.js');
 self.onmessage = function(e){
-    var input = e.data;
-    console.log(input);
-    //postMessage(sitemap.join('\n'));
+	if(e.data.file == true){
+			var reader = new FileReader();
+			reader.readAsText(e.data.input);
+			reader.onload = function(fi){
+				if(!fi.target.result || !(fi.target.result).trim()){
+					return;
+				}
+				remove_lines(fi.target.result,e.data.trim);
+			};
+
+	}else{
+		remove_lines(e.data.input,e.data.trim);
+	}
+
+	function remove_lines(input,options){
+		var trim = {
+			'trim':options.trim,
+			'left':options.left,
+			'right':options.right,
+		}
+		var string = input;
+		string = trim.trim==1?string.trim():string;
+		var lines = string.split(/\r|\n/);
+		var new_lines = [];
+		var total = 0;
+		for(i=0;i<lines.length;i++){
+			if(!lines[i] || !lines[i].trim()){
+				continue;
+			}
+			var v = lines[i];
+			if(trim.left == 1 && total != 1){
+				v = v.ltrim();
+			}
+			if(trim.right == 1){
+				v = v.rtrim();
+			}
+			if(!v){
+				continue;
+			}
+			new_lines.push(v);
+			total++;
+		}
+		postMessage({
+			"before":lines.length,
+			"after":total,
+			"data":new_lines.join('\r\n')
+		});
+
+	}
 }
 </script>
 <script>
-    var _case = 'title', pos = 0, str = [];
 window.addEventListener('load',function(){
-    $('#load_file').click2loadFile('#input');
-    /*
-    $('#load_file').on('change',function(e){
-        var file = this;
-        start_process('#loadfile',function(process){
-            process.postMessage();
-        });
-    });
-    */
-	$('#copy_text').click2copy('#input');
-    $('#undo').on('click',function(e){
-        if(str.length > 0){
-            pos--;
-            if(!str[pos]){
-                pos++;
-                return;
-            }
-            $('#input').val(str[pos]);
-        }
-
-    });
-    $('#redo').on('click',function(e){
-        e.preventDefault();
-        if(str.length > 0){
-            pos++;
-            if(!str[pos]){
-                pos--;
-                return;
-            }
-            $('#input').val(str[pos]);
-        }        
-    });
-    
+	var ltrim = 0, rtrim = 0, setrim = true;
+	$('#copy_text').click2copy('#output');
+    $('#load_file').on('change',function(){
+        var file = ($(this)[0].files)[0];
+        $('#filename').html(file.name);
+    })
     $('._rstool').submit(function(e){
         e.preventDefault();
+
+        input = $('#input').val();
+        ltrim = $('[name="ltrim"]').is(':checked');
+        rtrim = $('[name="rtrim"]').is(':checked');
+        setrim = $('[name="trim"]').is(':checked');
+
+        var file = $('#load_file').prop('files')[0];
+        var type;
+
+        if(input){
+            type = {
+                'file':false,
+                'input':input,
+				'trim' : {
+					'trim':setrim,
+					'left':ltrim,
+					'right':rtrim,
+				}
+            }
+        }
+        if(file && file.name){
+            type = {
+                'file':true,
+                'input':file,
+				'trim' : {
+					'trim':setrim,
+					'left':ltrim,
+					'right':rtrim,
+				}
+            }
+        }
+        if(!type){
+            return;
+        }
+        $('#process').modal('show');
+		inlineWorker('#removelines',function(worker){
+			worker.postMessage(type);
+			worker.onmessage = function(e){
+				worker.terminate();
+				worker = undefined;
+				$('#process .modal-body').append('<div class="small">Blank Lines Removed</div>');
+				$('#process').modal('hide');
+				$('#output').val(e.data.data);
+				$('#lines').html(e.data.before);
+				$('#after').html(e.data.after);
+				$('#removed').html((e.data.before - e.data.after));
+				$('#results').collapse('show');
+			};
+
+		});
     });
 });
 </script>
