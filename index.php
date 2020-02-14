@@ -28,7 +28,7 @@ $meta['og_description']         = $meta['description'];
     <div class="row justify-content-center">
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./htaccess-file-caching-generator" data-toggle="tooltip" title="Caching Generator">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/htaccess-file-caching-generator');?>" data-toggle="tooltip" title="Caching Generator">
                 <div class="icon">
                     <i class="fa fa-bolt"></i>                              
                 </div>
@@ -38,7 +38,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./reverse-text" data-toggle="tooltip" title="Reverse Text">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/reverse-text');?>" data-toggle="tooltip" title="Reverse Text">
                 <div class="icon">
                     <i class="fa fa-refresh"></i>                               
                 </div>
@@ -48,7 +48,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./split-text" data-toggle="tooltip" title="Split Text">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/split-text');?>" data-toggle="tooltip" title="Split Text">
                 <div class="icon">
                     <i class="fa fa-code-fork"></i>                             
                 </div>
@@ -58,7 +58,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./add-prefix-add-suffix" data-toggle="tooltip" title="Add Prefix / Suffix">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/add-prefix-add-suffix');?>" data-toggle="tooltip" title="Add Prefix / Suffix">
                 <div class="icon">
                     <i class="fa fa-plus-circle"></i>                               
                 </div>
@@ -68,7 +68,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./convert-new-lines-into-spaces" data-toggle="tooltip" title="Convert Line to Space">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/convert-new-lines-into-spaces');?>" data-toggle="tooltip" title="Convert Line to Space">
                 <div class="icon">
                     <i class="fa fa-unsorted"></i>                              
                 </div>
@@ -78,7 +78,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./convert-space-into-new-lines" data-toggle="tooltip" title="Convert Space to Line">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/convert-space-into-new-lines');?>" data-toggle="tooltip" title="Convert Space to Line">
                 <div class="icon">
                     <i class="fa fa-bars"></i>                              
                 </div>
@@ -88,7 +88,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./encode-url-decode-url" data-toggle="tooltip" title="Encode/Decode URL">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/encode-url-decode-url');?>" data-toggle="tooltip" title="Encode/Decode URL">
                 <div class="icon">
                     <i class="fa fa-link"></i>                              
                 </div>
@@ -98,7 +98,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./remove-blank-lines" data-toggle="tooltip" title="Remove Blank Lines">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/remove-blank-lines');?>" data-toggle="tooltip" title="Remove Blank Lines">
                 <div class="icon">
                     <i class="fa fa-eraser"></i>                                
                 </div>
@@ -108,7 +108,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./convert-text-case" data-toggle="tooltip" title="Case Convert">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/convert-text-case');?>" data-toggle="tooltip" title="Case Convert">
                 <div class="icon">
                     <i class="fa fa-font"></i>                              
                 </div>
@@ -118,7 +118,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./ck-html-editor" data-toggle="tooltip" title="HTML Editor">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/ck-html-editor');?>" data-toggle="tooltip" title="HTML Editor">
                 <div class="icon">
                     <i class="fa fa-code"></i>                              
                 </div>
@@ -128,7 +128,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./html-tag-extractor" data-toggle="tooltip" title="HTML Tag Extractor">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/html-tag-extractor');?>" data-toggle="tooltip" title="HTML Tag Extractor">
                 <div class="icon">
                     <i class="fa fa-share"></i>                             
                 </div>
@@ -138,7 +138,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./xml-sitemap-to-url" data-toggle="tooltip" title="XML Sitemap to URL">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/xml-sitemap-to-url');?>" data-toggle="tooltip" title="XML Sitemap to URL">
                 <div class="icon">
                     <i class="fa fa-file-code-o"></i>                               
                 </div>
@@ -148,7 +148,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./url-to-xml-sitemap-generator" data-toggle="tooltip" title="URL to XML Sitemap">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/url-to-xml-sitemap-generator');?>" data-toggle="tooltip" title="URL to XML Sitemap">
                 <div class="icon">
                     <i class="fa fa-file-text"></i>                             
                 </div>
@@ -158,7 +158,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./file-list-generator" data-toggle="tooltip" title="File List Generator">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/file-list-generator');?>" data-toggle="tooltip" title="File List Generator">
                 <div class="icon">
                     <i class="fa fa-list"></i>                              
                 </div>
@@ -168,7 +168,7 @@ $meta['og_description']         = $meta['description'];
         <!-- /Tool -->
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./faq-page-json-ld-schema-generator" data-toggle="tooltip" title="FAQPage Generator">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/faq-page-json-ld-schema-generator');?>" data-toggle="tooltip" title="FAQPage Generator">
                 <div class="icon">
                     <i class="fa fa-code"></i>                              
                 </div>
@@ -192,13 +192,8 @@ $meta['og_description']         = $meta['description'];
                             </a>
                         </div>
                         <!-- /Tool -->
-                        <?php 
-                            //copy file into github development directory
-                            file_get_contents('http://localhost/test/'.$tool['link']);
-                            //create_file();
-                        ?>
                     <?php } ?>
                     </div>
                 </div>
-<?php _footer(); ?>
+<?=get_template('inc/footer_tools.php');?>
 <?php _foot(); ?>
