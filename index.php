@@ -97,7 +97,7 @@ $meta['og_description']         = $meta['description'];
         </div>
         <!-- /Tool -->
         <!-- Tool -->
-        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="./remove-blank-lines" data-toggle="tooltip" title="Remove Blank Lines">
                 <div class="icon">
                     <i class="fa fa-eraser"></i>                                

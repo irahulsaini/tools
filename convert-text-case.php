@@ -16,7 +16,7 @@ $meta['og_description']         = $meta['description'];
 <?php _head(array(
     'meta'          => $meta,
 )); ?>
-<?php _header(); ?>
+<?php get_template('inc/header_tools'); ?>
 
 
         <style>
@@ -252,6 +252,7 @@ window.addEventListener('load',function(){
 });
 </script>
 <?php get_template('inc/tools.php');?>
+<?php get_template('inc/footer_tools'); ?>
 <?php _footer(); ?>
 <?php _foot(array(
 	'after_foot'=>'

@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <?php
-$meta['title']                  = 'Remove Blank Lines Online';
-$meta['description']            = 'Remove Blank Lines Online';
+$meta['title']                  = 'CK HTML Editor';
+$meta['description']            = 'CK HTML Editor';
 $meta['page_url']               = '';
 $meta['og_title']               = $meta['title'];
 $meta['og_description']         = $meta['description'];
@@ -16,7 +16,7 @@ $meta['og_description']         = $meta['description'];
 <?php _head(array(
     'meta'          => $meta,
 )); ?>
-<?php _header(); ?>
+<?php get_template('inc/header_tools'); ?>
 
 
 
@@ -67,7 +67,7 @@ window.addEventListener('load',function(){
 </script>
 
 <?php get_template('inc/tools.php');?>
-<?php _footer(); ?>
+<?php get_template('inc/footer_tools'); ?>
 <?php _foot(array(
 	'after_foot'=>'
             <script src="https://weforit-tools.github.io/development/js/global.js"></script>

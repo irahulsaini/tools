@@ -16,7 +16,7 @@ $meta['og_description']         = $meta['description'];
 <?php _head(array(
     'meta'          => $meta,
 )); ?>
-<?php _header(); ?>
+<?php get_template('inc/header_tools'); ?>
 
 
 
@@ -77,10 +77,14 @@ $meta['og_description']         = $meta['description'];
                             
                         </div>
                     </div>
-		            <div id="results" class="collapse">
+		            <div id="results" class="collapse mt-4">
 		            	<textarea class="form-control form-control-sm bg-white callout mb-0 callout-primary" id="output" rows="8" readonly="true"></textarea>
 		            	<div class="text-center my-4">
-		            		<button type="button" class="btn btn-dark" data-toggle="tooltip" title="Copy Text" id="copy_text"><i class="fa fa-clipboard mr-2"></i>Copy Code</button>
+		            		<button type="button" class="btn btn-primary mr-2" data-toggle="tooltip" title="Copy Text" id="copy_text"><i class="fa fa-clipboard mr-2"></i>Copy Code</button>
+		            		<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Copy Text" id="save_file"><i class="fa fa-save mr-2"></i>Download File</button>
+		            	</div>
+		            	<div class="callout callout-info collapse" id="download_info">
+		            		We've transferred file into your device and it'll start downloading shortly. If no downloads then your system doesn't support file <code>window.webkitURL.createObjectURL(blob)</code>
 		            	</div>
 		            </div>
                     
@@ -155,13 +159,22 @@ self.onmessage = function(e){
 }
 </script>
 <script>
+
 window.addEventListener('load',function(){
-	var ltrim = 0, rtrim = 0, setrim = true;
+	var ltrim = 0, rtrim = 0, setrim = true, filename = '';
 	$('#copy_text').click2copy('#output');
     $('#load_file').on('change',function(){
         var file = ($(this)[0].files)[0];
+        filename = file.name;
         $('#filename').html(file.name);
-    })
+    });
+
+	$('#save_file').on('click',function(e){
+		e.preventDefault();
+		save_file($('#output').val(),filename);
+		$('#download_info').collapse('show');
+	})
+	//$('#save_file').click2download('#output',filename);
     $('._rstool').submit(function(e){
         e.preventDefault();
 
@@ -218,7 +231,7 @@ window.addEventListener('load',function(){
 });
 </script>
 <?php get_template('inc/tools.php');?>
-<?php _footer(); ?>
+<?php get_template('inc/footer_tools'); ?>
 <?php _foot(array(
 	'after_foot'=>'
             <script src="https://weforit-tools.github.io/development/js/global.js"></script>
