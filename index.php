@@ -16,7 +16,7 @@ $meta['og_description']         = $meta['description'];
 <?php _head(array(
     'meta'          => $meta,
 )); ?>
-<?php _header(); ?>
+<?=get_template('inc/header_tools.php');?>
 <?php get_template('inc/tools.php');?>
 <style>
 .tool-menu-toggler{
