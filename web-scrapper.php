@@ -107,10 +107,13 @@ self.onmessage = function(e){
 	var id = e.data.id;
 	var filename = e.data.filename;
 	//console.log(e.data);
+	var title = tags.title?tags.title:'';
+	var desc = tags.description?tags.description:'';
+	var canonical = tags.canonical?tags.canonical:'';
 	var html = format.
-				replace(/{title}/g,tags.title).
-				replace(/{meta_description}/g,tags.description).
-				replace(/{canonical}/g,tags.canonical);
+				replace(/{title}/g,title).
+				replace(/{meta_description}/g,description).
+				replace(/{canonical}/g,canonical);
 	self.postMessage({
 		'id':id,
 		'output':html,
@@ -127,7 +130,7 @@ window.addEventListener('load',function(){
         e.preventDefault();
         $submit = $('.btn-submit');
         var url = $('#input').val();
-        if(!url){
+        if(!url || !$('#format').val()){
         	return;
         }
         if($('#extension').val()){
