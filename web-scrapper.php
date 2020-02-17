@@ -74,7 +74,7 @@ $meta['og_description']         = $meta['description'];
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center my-1">
-                            <button type="submit" class="btn btn-primary btn-sm py-3 px-4" id="submit"><i class="fa fa-eraser mr-2"></i>Start Scrapping</button><br/>
+                            <button type="submit" class="btn btn-primary btn-sm btn-submit py-3 px-4" id="submit"><i class="fa fa-eraser mr-2"></i>Start Scrapping</button><br/>
                         </div>
                     </div>
                 </div>
