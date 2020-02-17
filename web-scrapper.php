@@ -34,7 +34,16 @@ $meta['og_description']         = $meta['description'];
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-3">
                             <div class="form-group mb-0">
                 				<label class="small text-uppercase">Save Into:</label>
-                                <textarea id="format" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Enter the List of URLs" rows="6"></textarea>
+                                <textarea id="format" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Enter the List of URLs" rows="6"><html>
+ <head>
+  <title>{title}</title>
+  <meta name="description" content="{meta_description}"/>
+  <link rel="canonical" href="{canonical}"/>
+ </head>
+ <body>
+  {title}
+ </body>
+</html></textarea>
                                 <code data-toggle="tooltip" title="Replace Title into File" class="code">{title}</code> <code data-toggle="tooltip" title="Replace Meta Description into File"  class="code">{meta_description}</code> <code data-toggle="tooltip" title="Replace Canonical into File" class="code">{canonical}</code>
                             </div>
                         </div>
