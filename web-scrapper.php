@@ -112,7 +112,7 @@ self.onmessage = function(e){
 	var canonical = tags.canonical?tags.canonical:'';
 	var html = format.
 				replace(/{title}/g,title).
-				replace(/{meta_description}/g,description).
+				replace(/{meta_description}/g,desc).
 				replace(/{canonical}/g,canonical);
 	self.postMessage({
 		'id':id,
