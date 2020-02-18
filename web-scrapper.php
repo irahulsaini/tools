@@ -21,7 +21,7 @@ $meta['og_description']         = $meta['description'];
 
 
         <div class="container bg-white py-5 my-3 shadow-sm">
-        	
+        	<h5 class="text-center mb-4">Web Scrapping Bot</h5>
             <form class="_rstool">
                 <div class="bg-light border pt-3 px-3 pb-1 rounded">
                     <div class="row justify-content-center">
@@ -49,7 +49,7 @@ $meta['og_description']         = $meta['description'];
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
                         	<div class="form-group">
-								<label class="small text-uppercase">Output File Name Format:</label>
+								<label class="small text-uppercase">Output File Format:</label>
 								<div class="input-group input-group-sm mb-2">
 									<div class="input-group-prepend">
 										<div class="input-group-text">{file_name}</div>
