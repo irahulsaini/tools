@@ -50,6 +50,7 @@ $meta['og_description']         = $meta['description'];
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center my-1">
                             <button type="submit" class="btn btn-primary btn-sm btn-submit py-3 px-4" id="submit"><i class="fa fa-eraser mr-2"></i>Start Extracting</button><br/>
+                            <span class="response" id="response"></span>
                         </div>
                     </div>
                 </div>
@@ -82,7 +83,7 @@ $meta['og_description']         = $meta['description'];
 
 <script>
 
-var start = 0, url_list = [], extension = 'html', plain_text = true, html_tag = false;
+var start = 0, url_list = [], extension = 'html', plain_text = true, html_tag = false, submit=0;
 var config_export = {
     filename:'HTML_Tag_Export'
 }
@@ -98,6 +99,12 @@ window.addEventListener('load',function(){
     $('._rstool').submit(function(e){
         e.preventDefault();
         $submit = $('.btn-submit');
+        if(submit >= 1){
+        	$('.response').html('<div class="alert alert-danger">Please Refresh the Page to Run Extractor Again</div>');
+        	$(document).scrollto('response',0);
+        	return;
+        }
+        submit = 1;
         var url = $('#input').val();
         html_tag = $('#tag').val();
         if(!url || !html_tag){
