@@ -47,7 +47,18 @@ $meta['og_description']         = $meta['description'];
                                 <code data-toggle="tooltip" title="Replace Title into File" class="code">{title}</code> <code data-toggle="tooltip" title="Replace Meta Description into File"  class="code">{meta_description}</code> <code data-toggle="tooltip" title="Replace Canonical into File" class="code">{canonical}</code>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-9 col-xl-9 mb-3">
+                        	<div class="from-group">
+                        		<label class="small text-uppercase">Extra Elements:</label>
+                        		<input type="text" class="form-control form-control-sm" name="elements" id="elements" placeholder="#content, .classname, h1, h2, h3.name" />
+                        	</div>
+							<div class="custom-control custom-checkbox small mt-1">
+								<input type="checkbox" class="custom-control-input" id="plaintext" checked="true">
+								<label class="custom-control-label" for="plaintext" style="line-height:2">Extract Plain Text Only</label>
+							</div>
+							<small><strong>Note:</strong> Use curley brackets in tags for convert value, e.g: {h5}, {h6}</small>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-3">
                         	<div class="form-group">
 								<label class="small text-uppercase">Output File Format:</label>
 								<div class="input-group input-group-sm mb-2">
@@ -61,16 +72,6 @@ $meta['og_description']         = $meta['description'];
 								</div>
                         	</div>
 
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
-                        	<div class="from-group">
-                        		<label class="small text-uppercase">Extra Elements:</label>
-                        		<input type="text" class="form-control form-control-sm" placeholder="#content, .classname" />
-                        	</div>
-							<div class="custom-control custom-checkbox small mt-1">
-								<input type="checkbox" class="custom-control-input" id="plaintext" checked="true">
-								<label class="custom-control-label" for="plaintext" style="line-height:2">Extract Plain Text Only</label>
-							</div>
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center my-1">
@@ -114,6 +115,17 @@ self.onmessage = function(e){
 				replace(/{title}/g,title).
 				replace(/{meta_description}/g,desc).
 				replace(/{canonical}/g,canonical);
+
+	for (var key in tags) {
+	    var value = tags[key];
+	    var re = new RegExp('{'+key+'}',"g");
+	    if(typeof value === 'string'){
+	    	html = html.replace(re,value);
+		}else{
+			html = html.replace(re,value.join(''));
+		}
+	    
+	}
 	self.postMessage({
 		'id':id,
 		'output':html,
@@ -163,7 +175,8 @@ function process_url(urls,num){
 		dataType:'json',
 		data:{
 			'url':url,
-			'plaintext':plain_text
+			'plaintext':plain_text,
+			'elements':$('#elements').val()
 		},
 		success:function(response){
 			console.log(response);
