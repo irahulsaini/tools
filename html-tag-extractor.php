@@ -56,7 +56,7 @@ $meta['og_description']         = $meta['description'];
             </form>
             <div id="results" class="bg-white collapse-r mt-4">
             	<div class="table-responsive">
-            		<table class="table table-sm small" id="results_table">
+            		<table class="table table-sm small" id="results_table" style="width:100%">
             			<thead>
             				<tr>
             					<th>URL</th>
@@ -64,7 +64,7 @@ $meta['og_description']         = $meta['description'];
             					<th id="tag_name">HTML Tag</th>
             				</tr>
             			</thead>
-            			<tbody id="output_info">
+            			<tbody id="output_info" style="width:100%">
             				<tr>
             					<td class="text-center" colspan="3">No Records</td>
             				</tr>
@@ -132,6 +132,7 @@ function process_url(urls,num){
         $('#tip').addClass('show');
         table.columns.adjust().draw();
         $(document).scrollto('results_table',130);
+        $submit.replaceWith('<div class="alert alert-success">All URLs are extracted!!</div>')
 		return;
 	}
 	if(!urls[num]){
