@@ -95,7 +95,7 @@ window.addEventListener('load',function(){
     $('#export-txt').on('click',function(e){
         e.preventDefault();
         $('.tableexport-caption .button-default.txt').trigger('click');
-    });
+    }); 
     $('._rstool').submit(function(e){
         e.preventDefault();
         $submit = $('.btn-submit');
