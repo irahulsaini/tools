@@ -22,6 +22,12 @@ $meta['og_description']         = $meta['description'];
     .tableexport-caption{
         display:none;
     }
+    .custom-control-label{
+    	line-height:2;
+    }
+    .select-tag{
+    	cursor:pointer;
+    }
 </style>
 
 
@@ -33,7 +39,7 @@ $meta['og_description']         = $meta['description'];
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-8 mb-3">
                             <div class="form-group mb-0">
                 				<label class="small text-uppercase">URL List</label>
-                                <textarea id="input" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Enter the List of URLs" rows="6"></textarea>
+                                <textarea id="input" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Enter the List of URLs" rows="8"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-3">
@@ -44,6 +50,27 @@ $meta['og_description']         = $meta['description'];
 							<div class="custom-control custom-checkbox small mt-1">
 								<input type="checkbox" class="custom-control-input" id="plaintext" checked="true">
 								<label class="custom-control-label" for="plaintext" style="line-height:2">Extract Plain Text Only</label>
+							</div>
+
+							<div class="row small">
+								<div class="col-6">
+									<label class="font-weight-bold">Head/Meta</label>
+									<code class="code select-tag d-block" data-value="title">{title}</code>
+									<code class="code select-tag d-block" data-value="og:title">{og:title}</code>
+									<code class="code select-tag d-block" data-value="meta[description]">{description}</code>
+									<code class="code select-tag d-block" data-value="og:description">{og:description}</code>
+									<code class="code select-tag d-block" data-value="link[canonical]">{canonical}</code>
+									<code class="code select-tag d-block" data-value="og:url">{og:url}</code>
+								</div>
+								<div class="col-6">
+									<label class="font-weight-bold">Body Elements</label>
+									<code class="code select-tag d-block" data-value="h1">{&lt;h1&gt;}</code>
+									<code class="code select-tag d-block" data-value="h2">{&lt;h2&gt;}</code>
+									<code class="code select-tag d-block" data-value="h3">{&lt;h3&gt;}</code>
+									<code class="code select-tag d-block" data-value="h4">{&lt;h4&gt;}</code>
+									<code class="code select-tag d-block" data-value="h5">{&lt;h5&gt;}</code>
+									<code class="code select-tag d-block" data-value="h6">{&lt;h6&gt;}</code>
+								</div>
 							</div>
                         </div>
 
@@ -95,7 +122,10 @@ window.addEventListener('load',function(){
     $('#export-txt').on('click',function(e){
         e.preventDefault();
         $('.tableexport-caption .button-default.txt').trigger('click');
-    }); 
+    });
+    $('.select-tag').on('click',function(){
+    	$('#tag').val($(this).attr('data-value'));
+    })
     $('._rstool').submit(function(e){
         e.preventDefault();
         $submit = $('.btn-submit');
@@ -104,7 +134,6 @@ window.addEventListener('load',function(){
         	$(document).scrollto('response',0);
         	return;
         }
-        submit = 1;
         var url = $('#input').val();
         html_tag = $('#tag').val();
         if(!url || !html_tag){
@@ -121,6 +150,7 @@ window.addEventListener('load',function(){
         $submit.attr('disabled',1);
         $('#output_info').html('');
         $('#tag_name').html(html_tag);
+        submit = 1;
         process_url(url,0);
     });
 });

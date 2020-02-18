@@ -127,7 +127,17 @@ $meta['og_description']         = $meta['description'];
         </div>
         <!-- /Tool -->
         <!-- Tool -->
-        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/web-scrapper-bot');?>" data-toggle="tooltip" title="Web Scrapper">
+                <div class="icon">
+                    <i class="fa fa-bullseye"></i>                             
+                </div>
+                <div class="text">Web Scrapper Bot</div>
+            </a>
+        </div>
+        <!-- /Tool -->
+        <!-- Tool -->
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/html-tag-extractor');?>" data-toggle="tooltip" title="HTML Tag Extractor">
                 <div class="icon">
                     <i class="fa fa-share"></i>                             
