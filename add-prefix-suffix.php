@@ -174,7 +174,7 @@ window.addEventListener('load',function(){
 			worker.onmessage = function(e){
 				worker.terminate();
 				worker = undefined;
-				$('#process #status').html('<div class="small">Blank Lines Removed</div>');
+				$('#process #status').html('<div class="small">Prefix and Suffix has been added</div>');
 				$('#process').modal('hide');
 				$('#output').html(e.data.data);
 				$('#results').collapse('show');
