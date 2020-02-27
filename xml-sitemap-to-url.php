@@ -30,20 +30,16 @@ $meta['og_description']         = $meta['description'];
         'table_export'  : {},
     }
 </script>
-<style type="text/css">
-    .tableexport-caption{
-        display:none;
-    }
-</style>
 
-        <div class="container bg-white py-5 my-3 shadow-sm">
-        	
+        <div class="container bg-white py-2 my-3 shadow-sm">
+            <h5 class="text-center mb-1">XML Sitemap to URL  Extractor</h5>
+            <p class="small text-center">Extract URLs from a Sitemap.xml</p>
             <form class="_rstool">
                 <div class="bg-light border pt-3 px-3 pb-1 rounded">
-                	<h6>XML Sitemap to URL</h6>
                     <div class="row justify-content-center">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
                             <div class="form-group mb-0">
+                                <label>XML Sitemap:</label>
                                 <textarea id="input" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Load Sitemap XML File or Copy-Paste Sitemap XML Code here..." rows="10"></textarea>
                             </div>
                             &mdash; OR &mdash;
@@ -95,6 +91,53 @@ $meta['og_description']         = $meta['description'];
 
             </div>
         </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col-md-6 col-xl-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="border-bottom pb-2 text-uppercase">About Tool</h6>
+                    <p class="text-justify">The Tool can easly extract all urls from a sitemap.xml file. Please provide or enter valid XML format and here you go, you'll get a list of URLs that is exists in Sitemap File</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6 col-xl-6 mb-4">
+            <div class="accordion accordion-arrow" id="faq">
+                <!-- FAQ -->
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <button data-target="#about_1" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                            What is XML Sitemap to URL Extractor
+                        </button>
+                    </div>
+                    <div id="about_1" class="collapse" data-parent="#faq">
+                        <div class="card-body small">
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- /FAQ -->     
+                <!-- FAQ -->
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <button data-target="#about_2" data-toggle="collapse" class="collapsed" aria-expanded="false">
+                            What is XML Sitemap to URL Extractor
+                        </button>
+                    </div>
+                    <div id="about_2" class="collapse" data-parent="#faq">
+                        <div class="card-body small">
+                            The Tool can easly extract all urls from a sitemap.xml file. Please provide or enter valid XML format and here you go, you'll get a list of URLs that is exists in Sitemap File
+                        </div>
+                    </div>
+                </div>
+                <!-- /FAQ -->         
+            </div>
+        </div>
+
     </div>
 </div>
 <script type='javascript/worker' id='xml-url'>

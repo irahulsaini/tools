@@ -28,40 +28,14 @@ $meta['og_description']         = $meta['description'];
                     <div class="row justify-content-center">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mb-3">
                             <div class="form-group mb-0">
-                                <textarea id="input" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Start typing..." rows="6"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-6">
-                                    <div class="counter text-primary">
-                                        <div class="d-flex small justify-content-center justify-content-md-start">
-                                            <div class="mr-3">
-                                                Total: <span class="font-weight-bold lead" id="lines">0</span>
-                                            </div>
-                                            <div class="mr-3">
-                                                After: <span class="font-weight-bold lead" id="after">0</span>
-                                            </div>
-                                            <div class="mr-3">
-                                                Removed: <span class="font-weight-bold lead" id="removed">0</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 text-center text-sm-right">
-
-                                    <label type="button" class="btn btn-primary btn-sm py-0 mb-0" data-toggle="tooltip" title="Load File From Your Device">
-                                    <span id="filename"></span>
-                                        <i class="fa fa-plus-circle"></i>
-                                        <input type="file" id="load_file" name="load_file" class="d-none"/>
-                                    </label>
-                                    <button type="reset" class="btn btn-primary btn-sm py-0" data-toggle="tooltip" title="Reset All Fields"><i class="fa fa-eraser mr-1"></i></button>
-                                </div>
+                                <textarea id="input" class="form-control form-control-sm bg-white callout mb-0 callout-primary" placeholder="Start typing..." rows="8"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 small">
                             <strong class="d-block mb-2">Options:</strong>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="trim" id="trim" checked="true">
-                                <label class="custom-control-label" for="trim">Trim Lines (Start &amp; End)</label>
+                                <label class="custom-control-label" for="trim">Trim (Start &amp; End)</label>
                             </div>
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" name="ltrim" id="trim_before">
@@ -71,10 +45,29 @@ $meta['og_description']         = $meta['description'];
                                 <input type="checkbox" class="custom-control-input" name="rtrim" id="trim_after">
                                 <label class="custom-control-label" for="trim_after">Trim From End (Every Line)</label>
                             </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="remove_blank" id="remove_blank" checked="true">
+                                <label class="custom-control-label" for="remove_blank">Exclude Blank Lines</label>
+                            </div>
+                            <div class="row mt-3">
+                            	<div class="col-6">
+		                            <div class="form-group">
+		                            	<label class="mb-0"><strong>Prefix:</strong></label>
+		                            	<input type="text" class="form-control form-control-sm" id="prefix" placeholder="Mr.">
+		                            </div>
+                            	</div>
+                            	<div class="col-6">
+		                            <div class="form-group">
+		                            	<label class="mb-0"><strong>Suffix:</strong></label>
+		                            	<input type="text" class="form-control form-control-sm" id="suffix" placeholder="(Organisation)">
+		                            </div>
+                            	</div>
+                            </div>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 text-center my-1">
-                            <button type="submit" class="btn btn-primary btn-sm py-3 px-4" id="submit"><i class="fa fa-eraser mr-2"></i>Remove Blank Lines</button><br/>
-                            
+                            <button type="submit" class="btn btn-primary btn-sm py-3 px-4" id="submit">
+                            	<i class="fa fa-send mr-2"></i>Submit
+                            </button>
                         </div>
                     </div>
 		            <div id="results" class="collapse mt-4">
@@ -99,59 +92,42 @@ $meta['og_description']         = $meta['description'];
 				<div class="spinner-border text-primary" role="status">
 					<span class="sr-only">Please Wait</span>
 				</div>
-				<div class="font-weight-bold text-primary">Removing Blank Lines...</div>
+				<div class="font-weight-bold text-primary" id="status">Adding Prefix Suffix...</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script type="javascript/worker" id="removelines">
-self.importScripts('https://weforit-tools.github.io/development/js/functions.js');
+<script type="javascript/worker" id="process_data">
+self.importScripts('http://localhost/rs/views/assets/js/functions.js');
 self.onmessage = function(e){
-	if(e.data.file == true){
-			var reader = new FileReader();
-			reader.readAsText(e.data.input);
-			reader.onload = function(fi){
-				if(!fi.target.result || !(fi.target.result).trim()){
-					return;
-				}
-				remove_lines(fi.target.result,e.data.trim);
-			};
+	process_data(e.data);
+	function process_data(data){
+		var input = data.input;
+		var trim = data.trim;
+		var ltrim = data.ltrim;
+		var rtrim = data.rtrim;
+		var prefix = data.prefix;
+		var suffix = data.suffix;
+		var remove_blank = data.rb;
 
-	}else{
-		remove_lines(e.data.input,e.data.trim);
-	}
-
-	function remove_lines(input,options){
-		var trim = {
-			'trim':options.trim,
-			'left':options.left,
-			'right':options.right,
-		}
-		var string = input;
-		string = trim.trim==1?string.trim():string;
-		var lines = string.split(/\r|\n/);
+		string = trim==1?input.trim():input;
+		var lines = input.split(/\r|\n/);
 		var new_lines = [];
-		var total = 0;
 		for(i=0;i<lines.length;i++){
-			if(!lines[i] || !lines[i].trim()){
+			var line = lines[i];
+			if(ltrim == 1){
+				line = line.ltrim();
+			}
+			if(rtrim == 1){
+				line = line.rtrim();
+			}
+			if(!line && remove_blank == true){
 				continue;
 			}
-			var v = lines[i];
-			if(trim.left == 1 && total != 1){
-				v = v.ltrim();
-			}
-			if(trim.right == 1){
-				v = v.rtrim();
-			}
-			if(!v){
-				continue;
-			}
-			new_lines.push(v);
-			total++;
+			new_lines.push(prefix + line + suffix);
 		}
 		postMessage({
-			"before":lines.length,
-			"after":total,
+			"total":lines.length,
 			"data":new_lines.join('\r\n')
 		});
 
@@ -160,69 +136,47 @@ self.onmessage = function(e){
 </script>
 <script>
 
+var ltrim = 0, rtrim = 0, trim = true, rb = true;
 window.addEventListener('load',function(){
-	var ltrim = 0, rtrim = 0, setrim = true, filename = '';
 	$('#copy_text').click2copy('#output');
-    $('#load_file').on('change',function(){
-        var file = ($(this)[0].files)[0];
-        filename = file.name;
-        $('#filename').html(file.name);
-    });
 
 	$('#save_file').on('click',function(e){
 		e.preventDefault();
-		save_file($('#output').val(),filename);
+		save_file($('#output').val(),'output.txt');
 		$('#download_info').collapse('show');
 	})
 	//$('#save_file').click2download('#output',filename);
     $('._rstool').submit(function(e){
         e.preventDefault();
 
-        input = $('#input').val();
+        var input = $('#input').val();
+        var prefix = $('#prefix').val();
+        var suffix = $('#suffix').val();
         ltrim = $('[name="ltrim"]').is(':checked');
         rtrim = $('[name="rtrim"]').is(':checked');
-        setrim = $('[name="trim"]').is(':checked');
+        trim = $('[name="trim"]').is(':checked');
+        rb = $('#remove_blank').is(':checked');
+        if(!input || (!prefix && !suffix)){
+        	return;
+        }
 
-        var file = $('#load_file').prop('files')[0];
-        var type;
-
-        if(input){
-            type = {
-                'file':false,
-                'input':input,
-				'trim' : {
-					'trim':setrim,
-					'left':ltrim,
-					'right':rtrim,
-				}
-            }
-        }
-        if(file && file.name){
-            type = {
-                'file':true,
-                'input':file,
-				'trim' : {
-					'trim':setrim,
-					'left':ltrim,
-					'right':rtrim,
-				}
-            }
-        }
-        if(!type){
-            return;
-        }
         $('#process').modal('show');
-		inlineWorker('#removelines',function(worker){
-			worker.postMessage(type);
+		inlineWorker('#process_data',function(worker){
+			worker.postMessage({
+				'input':input,
+				'prefix':prefix,
+				'suffix':suffix,
+				'trim':trim,
+				'ltrim':ltrim,
+				'rtrim':rtrim,
+				'rb':rb
+			});
 			worker.onmessage = function(e){
 				worker.terminate();
 				worker = undefined;
-				$('#process .modal-body').append('<div class="small">Blank Lines Removed</div>');
+				$('#process #status').html('<div class="small">Blank Lines Removed</div>');
 				$('#process').modal('hide');
-				$('#output').val(e.data.data);
-				$('#lines').html(e.data.before);
-				$('#after').html(e.data.after);
-				$('#removed').html((e.data.before - e.data.after));
+				$('#output').html(e.data.data);
 				$('#results').collapse('show');
 			};
 
