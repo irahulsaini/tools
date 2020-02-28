@@ -25,7 +25,7 @@ $meta['og_description']         = $meta['description'];
 </style>
 
 <div class="container my-4">
-    <div class="row justify-content-center">
+    <div class="row">
         <!-- Tool -->
         <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
             <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/htaccess-file-caching-generator');?>" data-toggle="tooltip" title="Caching Generator">
@@ -57,8 +57,8 @@ $meta['og_description']         = $meta['description'];
         </div>
         <!-- /Tool -->
         <!-- Tool -->
-        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
-            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/add-prefix-add-suffix');?>" data-toggle="tooltip" title="Add Prefix / Suffix">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/add-prefix-suffix');?>" data-toggle="tooltip" title="Add Prefix / Suffix">
                 <div class="icon">
                     <i class="fa fa-plus-circle"></i>                               
                 </div>
@@ -177,7 +177,7 @@ $meta['og_description']         = $meta['description'];
         </div>
         <!-- /Tool -->
         <!-- Tool -->
-        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 d-none">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <a class="tool-box bg-white shadow-sm pt-3 pb-1" href="<?=base_url('tools/faq-page-json-ld-schema-generator');?>" data-toggle="tooltip" title="FAQPage Generator">
                 <div class="icon">
                     <i class="fa fa-code"></i>                              

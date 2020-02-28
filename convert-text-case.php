@@ -253,7 +253,6 @@ window.addEventListener('load',function(){
 </script>
 <?php get_template('inc/tools.php');?>
 <?php get_template('inc/footer_tools'); ?>
-<?php _footer(); ?>
 <?php _foot(array(
 	'after_foot'=>'
             <script src="https://weforit-tools.github.io/development/js/global.js"></script>
