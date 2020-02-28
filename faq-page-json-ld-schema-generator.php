@@ -411,5 +411,6 @@ function import_json(){
 <?php _foot(array(
 	'after_foot'=>'
             <script src="https://weforit-tools.github.io/development/js/global.js"></script>
-            <script src="https://weforit-tools.github.io/development/js/functions.js"></script>'
+            <script src="https://weforit-tools.github.io/development/js/functions.js"></script>
+            <script src="'.base_url('views/assets/js/jquery-ui.js').'"></script>'
 )); ?>
